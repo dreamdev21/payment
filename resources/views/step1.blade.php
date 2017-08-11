@@ -31,10 +31,9 @@
                             <button id = "showstep" class="btn btn-sm btn-success rippler rippler-default btn-lg" onclick="showstep1()">Continue</button>
                         </div>
                     </div>
-
                     <div id = "step1" class="container" style="visibility: hidden;">
-                        <div class="container">
-
+                        {!! Form::open(['url' => '/step1', 'class' => 'form-horizontal']) !!}
+                        <div id = "box1" class="container">
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -43,96 +42,75 @@
                                             <span class="card-title">Step1</span>
                                         </div>
                                         <div class="card-content">
-                                            <div class="form-horizontal">
+
                                                 <fieldset class="last-child">
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Category</label>
-                                                        <div class="col-sm-10">
-                                                            <select name="account" class="form-control m-b">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                            </select>
+                                                        {!! Form::label('select', 'Category', ['class' => 'col-lg-2 control-label'] )  !!}
+                                                        <div class="col-lg-10">
+                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">City</label>
-                                                        <div class="col-sm-10">
-                                                            <select name="account" class="form-control m-b">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                            </select>
+                                                        {!! Form::label('select', 'City', ['class' => 'col-lg-2 control-label'] )  !!}
+                                                        <div class="col-lg-10">
+                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Address</label>
-                                                        <div class="col-sm-10">
-                                                            <select name="account" class="form-control m-b">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                            </select>
+                                                        {!! Form::label('select', 'Address', ['class' => 'col-lg-2 control-label'] )  !!}
+                                                        <div class="col-lg-10">
+                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Zip code</label>
-                                                        <div class="col-sm-10">
-                                                            <select name="account" class="form-control m-b">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                            </select>
+                                                        {!! Form::label('select', 'Zipcode', ['class' => 'col-lg-2 control-label'] )  !!}
+                                                        <div class="col-lg-10">
+                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
 
                                                 <fieldset>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">District</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control form-control-rounded">
+                                                        {!! Form::label('text', 'District', ['class' => 'col-lg-2 control-label']) !!}
+                                                        <div class="col-lg-10">
+                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Map Position</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control form-control-rounded">
+                                                        {!! Form::label('text', 'Map Position', ['class' => 'col-lg-2 control-label']) !!}
+                                                        <div class="col-lg-10">
+                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Title</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control form-control-rounded">
+                                                        {!! Form::label('text', 'Title', ['class' => 'col-lg-2 control-label']) !!}
+                                                        <div class="col-lg-10">
+                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
                                                 <fieldset>
+                                                    <!-- Text Area -->
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Description</label>
-                                                        <div class="col-sm-10">
-                                                            <textarea class="form-control" rows="3"></textarea>
+                                                        {!! Form::label('textarea', 'Description', ['class' => 'col-lg-2 control-label']) !!}
+                                                        <div class="col-lg-10">
+                                                            {!! Form::textarea('textarea', $value = null, ['class' => 'form-control', 'rows' => 3]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
 
-                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
-                        <div class="container">
+                        <div id = "box2" class="container">
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -142,22 +120,124 @@
                                             <span class="card-title">Image Upload</span>
                                         </div>
                                         <div class="card-content">
-                                            <div class="form-group">
-                                                {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
-                                                <div class="col-lg-10">
-                                                    {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
-                                                </div>
-                                            </div>
+                                            {{Form::open(['url' => '/step1', 'files' => true])}}
+
+                                            {{Form::label('user_photo', 'User Photo',['class' => 'control-label'])}}
+                                            {{Form::file('user_photo')}}
+                                            {{Form::submit('Save', ['class' => 'btn btn-success'])}}
+
+                                            {{--{{Form::close()}}--}}
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
+                        <div id = "box3" class="container">
+                            <div class="row">
+                                <div class="col-md-12">
 
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <span class="card-title">User Info</span>
+                                        </div>
+                                        <div class="card-content">
 
+                                            <fieldset class="last-child">
+
+                                                <div class="form-group">
+                                                    {!! Form::label('text', 'Age', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {!! Form::label('text', 'First Name', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {!! Form::label('text', 'Last Name', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {!! Form::label('text', 'Phone', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {!! Form::label('text', 'IP', ['class' => 'col-lg-2 control-label']) !!}
+                                                    <div class="col-lg-10">
+                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id = "box4" class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <span class="card-title">Agreement</span>
+                                        </div>
+                                        <div class="card-content">
+
+                                            <fieldset class="last-child">
+                                                <div class="form-group">
+                                                    <div class="col-lg-offset-2 col-lg-4">
+                                                        <div class="checkbox c-checkbox">
+                                                            <label>
+                                                                {!! Form::checkbox('checkbox') !!}
+                                                                <span class="fa fa-check"></span>Accept Term of Use:</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-offset-2 col-lg-4">
+                                                        <div class="checkbox c-checkbox">
+                                                            <label>
+                                                                {!! Form::checkbox('checkbox') !!}
+                                                                <span class="fa fa-check"></span>Privacy Policy:</label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-lg-2 col-lg-offset-5">
+                                                        {!! Form::submit('Continue', ['class' => 'btn btn-sm btn-success rippler rippler-default'] ) !!}
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        {{Form::close()}}
                     </div>
-
 
                 </section>
             </div>

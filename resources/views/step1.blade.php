@@ -86,62 +86,82 @@
                                                         </div>
                                                     </div>
                                                 </fieldset>
-                                            {!! Form::close() !!}
+                                            {{--{!! Form::close() !!}--}}
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
+                        <div id = "box3" class="container">
+                            <div class="row">
+                                <div class="col-md-12">
 
-                            <h1>Laravel 5 - Ajax Image Uploading Tutorial</h1>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <span class="card-title">Step1</span>
+                                        </div>
+                                        <div class="card-content">
+
+                                            <fieldset class="last-child">
 
 
-                            <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">
 
 
-                                <div class="alert alert-danger print-error-msg" style="display:none">
+                                                <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">
 
-                                    <ul></ul>
 
+                                                    <div class="alert alert-danger print-error-msg" style="display:none">
+
+                                                        <ul></ul>
+
+                                                    </div>
+
+
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                                                    <div class="form-group">
+
+                                                        <label>Alt Title:</label>
+
+                                                        <input type="text" name="title" class="form-control" placeholder="Add Title">
+
+                                                    </div>
+
+
+                                                    <div class="form-group">
+
+                                                        <label>Image:</label>
+
+                                                        <input type="file" name="image" id="profile-img" class="form-control">
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label>Preview:</label>
+
+                                                        <img src="" id="profile-img-tag" width="200px"  />
+
+                                                    </div>
+
+
+                                                    <div class="form-group">
+
+                                                        <button class="btn btn-success upload-image" type="submit">Upload Image</button>
+
+                                                    </div>
+
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-
-
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
-                                <div class="form-group">
-
-                                    <label>Alt Title:</label>
-
-                                    <input type="text" name="title" class="form-control" placeholder="Add Title">
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label>Image:</label>
-
-                                    <input type="file" name="image" class="form-control">
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <button class="btn btn-success upload-image" type="submit">Upload Image</button>
-
-                                </div>
-
-
-                            </form>
-
-
+                            </div>
                         </div>
-
-
 
                         <div id = "box3" class="container">
 
@@ -253,6 +273,35 @@
                 </section>
             </div>
         </div>
+        <script type="text/javascript">
+
+            function readURL(input) {
+
+                if (input.files && input.files[0]) {
+
+                    var reader = new FileReader();
+
+
+
+                    reader.onload = function (e) {
+
+                        $('#profile-img-tag').attr('src', e.target.result);
+
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+
+                }
+
+            }
+
+            $("#profile-img").change(function(){
+
+                readURL(this);
+
+            });
+
+        </script>
         <script type="text/javascript">
 
             $("body").on("click",".upload-image",function(e){

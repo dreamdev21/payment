@@ -142,27 +142,12 @@
                                             <span class="card-title">Image Upload</span>
                                         </div>
                                         <div class="card-content">
-                                            <form action="{{ url('image-upload') }}" enctype="multipart/form-data" method="POST">
-
-                                                {{ csrf_field() }}
-
-                                                <div class="row">
-
-                                                    <div class="col-md-12">
-
-                                                        <input type="file" name="image" />
-
-                                                    </div>
-
-                                                    <div class="col-md-12">
-
-                                                        <button type="submit" class="btn btn-success">Upload</button>
-
-                                                    </div>
-
+                                            <div class="form-group">
+                                                {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
+                                                <div class="col-lg-10">
+                                                    {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
                                                 </div>
-
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
 

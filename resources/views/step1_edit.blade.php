@@ -22,7 +22,7 @@
 
                                     <div class="card">
                                         <div class="card-header">
-                                            <span class="card-title">Step1</span>
+                                            <span class="card-title">Step2</span>
                                         </div>
                                         <div class="card-content">
 

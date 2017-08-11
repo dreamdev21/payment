@@ -21,10 +21,11 @@ Route::get('/', function () {
 Route::post('step1/edit', function ($res) {
     return view('step1_edit')->with('res',$res);
 });
+Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
+
+Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 Route::resource('step1', 'Step1Controller');
 Route::post('step1/create', 'Step1Controller@create');
 //Route::post('step1/edit', 'Step1Controller@edit');
-Route::get('image-upload','ImageController@imageUpload');
 
-Route::post('image-upload','ImageController@imageUploadPost');
 

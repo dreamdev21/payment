@@ -86,37 +86,65 @@
                                                         </div>
                                                     </div>
                                                 </fieldset>
-
+                                            {!! Form::close() !!}
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <div id = "box2" class="container">
+                        <div class="container">
 
-                            <div class="row">
-                                <div class="col-md-12">
+                            <h1>Laravel 5 - Ajax Image Uploading Tutorial</h1>
 
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <span class="card-title">Image Upload</span>
-                                        </div>
-                                        <div class="card-content">
-                                            {{Form::open(['url' => '/step1', 'files' => true])}}
 
-                                            {{Form::label('user_photo', 'User Photo',['class' => 'control-label'])}}
-                                            {{Form::file('user_photo')}}
-                                            {{Form::submit('Save', ['class' => 'btn btn-success'])}}
+                            <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">
 
-                                            {{--{{Form::close()}}--}}
-                                        </div>
-                                    </div>
+
+                                <div class="alert alert-danger print-error-msg" style="display:none">
+
+                                    <ul></ul>
 
                                 </div>
-                            </div>
+
+
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                                <div class="form-group">
+
+                                    <label>Alt Title:</label>
+
+                                    <input type="text" name="title" class="form-control" placeholder="Add Title">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>Image:</label>
+
+                                    <input type="file" name="image" class="form-control">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <button class="btn btn-success upload-image" type="submit">Upload Image</button>
+
+                                </div>
+
+
+                            </form>
+
+
                         </div>
+
+
+
                         <div id = "box3" class="container">
+
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -127,9 +155,9 @@
                                         <div class="card-content">
 
                                             <fieldset class="last-child">
-
+{{--                                                {!! Form::open(['url' => '/step1/create', 'class' => 'form-horizontal']) !!}--}}
                                                 <div class="form-group">
-                                                    {!! Form::label('text', 'Age', ['class' => 'col-lg-2 control-label']) !!}
+                                                    {!! Form::label('age', 'Age', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
                                                         {!! Form::text('age', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
@@ -225,5 +253,51 @@
                 </section>
             </div>
         </div>
+        <script type="text/javascript">
 
+            $("body").on("click",".upload-image",function(e){
+
+                $(this).parents("form").ajaxForm(options);
+
+            });
+
+
+            var options = {
+
+                complete: function(response)
+
+                {
+
+                    if($.isEmptyObject(response.responseJSON.error)){
+
+                        $("input[name='title']").val('');
+
+                        alert('Image Upload Successfully.');
+
+                    }else{
+
+                        printErrorMsg(response.responseJSON.error);
+
+                    }
+
+                }
+
+            };
+
+
+            function printErrorMsg (msg) {
+
+                $(".print-error-msg").find("ul").html('');
+
+                $(".print-error-msg").css('display','block');
+
+                $.each( msg, function( key, value ) {
+
+                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+                });
+
+            }
+
+        </script>
 @stop

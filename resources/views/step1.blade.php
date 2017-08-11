@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -32,7 +31,8 @@
                         </div>
                     </div>
                     <div id = "step1" class="container" style="visibility: hidden;">
-                        {!! Form::open(['url' => '/step1', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['url' => '/step1/create', 'class' => 'form-horizontal']) !!}
+                        {!! csrf_field() !!}
                         <div id = "box1" class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -47,25 +47,25 @@
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Category', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('category', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'City', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('city', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Address', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('address', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Zipcode', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('select', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('zipcode', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -74,7 +74,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'District', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('district', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -82,7 +82,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'Map Position', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('mapposition', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -90,7 +90,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'Title', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('title', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -99,7 +99,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('textarea', 'Description', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::textarea('textarea', $value = null, ['class' => 'form-control', 'rows' => 3]) !!}
+                                                            {!! Form::textarea('description', $value = null, ['class' => 'form-control', 'rows' => 3]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -148,28 +148,28 @@
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Age', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('age', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'First Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('firstname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Last Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('lastname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Phone', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('phone', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
@@ -181,7 +181,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    {!! Form::label('text', 'IP', ['class' => 'col-lg-2 control-label']) !!}
+                                                    {!! Form::label('ip', 'IP', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
                                                         {!! Form::text('text', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>

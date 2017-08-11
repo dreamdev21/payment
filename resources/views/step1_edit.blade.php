@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
         <div class="flex-center position-ref full-height">
@@ -8,12 +7,13 @@
 
                     <div class="page-header text-center">
                         <div class="container">
-                            <h1>Welcome to our service!</h1>
+                            <h1>Check your data</h1>
                             <br>
-                            <button id = "showstep" class="btn btn-sm btn-success rippler rippler-default btn-lg" onclick="showstep1()">Continue</button>
+
                         </div>
                     </div>
-                    <div id = "step1" class="container" style="visibility: hidden;">
+                    {{--{{ $res[] }}--}}
+                    <div class="container">
                         {!! Form::open(['url' => '/step1/create', 'class' => 'form-horizontal']) !!}
                         {!! csrf_field() !!}
                         <div id = "box1" class="container">
@@ -30,25 +30,25 @@
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Category', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('category', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('category', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['category'], ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'City', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('city', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('city', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['city'], ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Address', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('address', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('address', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['address'], ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Zipcode', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('zipcode', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('zipcode', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['zipcode'], ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -57,7 +57,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'District', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('district', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('district', $value = $res['district'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -65,7 +65,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'Map Position', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('mapposition', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('mapposition', $value = $res['mapposition'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -73,7 +73,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('text', 'Title', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::text('title', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                            {!! Form::text('title', $value = $res['title'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -82,7 +82,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('textarea', 'Description', ['class' => 'col-lg-2 control-label']) !!}
                                                         <div class="col-lg-10">
-                                                            {!! Form::textarea('description', $value = null, ['class' => 'form-control', 'rows' => 3]) !!}
+                                                            {!! Form::textarea('description', $value = $res['description'], ['class' => 'form-control', 'rows' => 3]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -131,79 +131,42 @@
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Age', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('age', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('age', $value = $res['age'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'First Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('firstname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('firstname', $value = $res['firstname'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Last Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('lastname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('lastname', $value = $res['lastname'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Phone', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('phone', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('phone', $value = $res['phone'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                                        {!! Form::email('email', $value = $res['email'], ['class' => 'form-control', 'placeholder' => 'email']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('ip', 'IP', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('ip', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
-                                                    </div>
-                                                </div>
-
-                                            </fieldset>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div id = "box4" class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <span class="card-title">Agreement</span>
-                                        </div>
-                                        <div class="card-content">
-
-                                            <fieldset class="last-child">
-                                                <div class="form-group">
-                                                    <div class="col-lg-offset-2 col-lg-4">
-                                                        <div class="checkbox c-checkbox">
-                                                            <label>
-                                                                {!! Form::checkbox('checkbox') !!}
-                                                                <span class="fa fa-check"></span>Accept Term of Use:</label>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-lg-offset-2 col-lg-4">
-                                                        <div class="checkbox c-checkbox">
-                                                            <label>
-                                                                {!! Form::checkbox('checkbox') !!}
-                                                                <span class="fa fa-check"></span>Privacy Policy:</label>
-                                                        </div>
-
+                                                        {!! Form::text('ip', $value = $res['ip'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -212,7 +175,6 @@
                                                     </div>
                                                 </div>
                                             </fieldset>
-
                                         </div>
                                     </div>
 

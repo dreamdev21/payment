@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Input;
+use View;
 
 class Step1Controller extends Controller
 {
@@ -23,8 +24,7 @@ class Step1Controller extends Controller
     {
         //
          $res = Input::all();
-         print_r($res);
-        return view('step1/edit');
+        return view('step1_edit')->with('res',$res);
     }
 
     /**
@@ -57,6 +57,7 @@ class Step1Controller extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**

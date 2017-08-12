@@ -55,6 +55,9 @@ class Step1Controller extends Controller
     {
         //
          $res = Input::all();
+
+//         print_r($res);exit;
+        $this->validate($res);
         return view('step1_edit')->with('res',$res);
     }
 

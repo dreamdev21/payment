@@ -3650,6 +3650,10 @@ output {
   font-size: 14px;
   line-height: 1.428571429;
   color: #555555; }
+.file {
+  visibility: show;
+  position: absolute;
+}
 
 .form-control {
   display: block;

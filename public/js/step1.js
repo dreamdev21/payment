@@ -9,3 +9,7 @@ function showstep1() {
 //     var agecheck = $('input[name=age]').val;
 //     alert(agecheck);
 // });
+$(document).ready(function () {
+    var ss = $("#accept").val();
+    console.log(ss);
+});

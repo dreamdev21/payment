@@ -93,69 +93,72 @@
                                 </div>
                             </div>
                         </div>
-                        <div id = "box3" class="container">
+                        <div id = "box2" class="container">
                             <div class="row">
                                 <div class="col-md-12">
 
                                     <div class="card">
                                         <div class="card-header">
-                                            <span class="card-title">Step1</span>
+                                            <span class="card-title">Image Upload</span>
                                         </div>
+
                                         <div class="card-content">
-
-                                            <fieldset class="last-child">
-
-
-
-
-                                                <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">
+                                            <div class ="row">
+                                                <div class="col-md-4 col-md-offset-2">
+                                                    <fieldset class="last-child">
 
 
-                                                    <div class="alert alert-danger print-error-msg" style="display:none">
-
-                                                        <ul></ul>
-
-                                                    </div>
 
 
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+{{--                                                        <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">--}}
 
 
-                                                    <div class="form-group">
+                                                            <div class="alert alert-danger print-error-msg" style="display:none">
 
-                                                        <label>Alt Title:</label>
+                                                                <ul></ul>
 
-                                                        <input type="text" name="title" class="form-control" placeholder="Add Title">
-
-                                                    </div>
+                                                            </div>
 
 
-                                                    <div class="form-group">
-
-                                                        <label>Image:</label>
-
-                                                        <input type="file" name="image" id="profile-img" class="form-control">
-
-                                                    </div>
-
-                                                    <div class="form-group">
-
-                                                        <label>Preview:</label>
-
-                                                        <img src="" id="profile-img-tag" width="200px"  />
-
-                                                    </div>
+                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
-                                                    <div class="form-group">
+                                                            <div class="form-group">
 
-                                                        <button class="btn btn-success upload-image" type="submit">Upload Image</button>
+                                                                <label>Alt Title:</label>
 
-                                                    </div>
+                                                                <input type="text" name="title" class="form-control" placeholder="Add Title">
+
+                                                            </div>
 
 
-                                                </form>
+                                                        <div class="form-group">
+                                                            <input type="file" name="img[]" class="file"  id="profile-img">
+                                                            <div class="input-group col-xs-12">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                                                <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
+                                                                <span class="input-group-btn">
+                                                                    <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                                                  </span>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4 col-md-offset-2">
+                                                    <fieldset class="last-child">
+                                                        <div class="form-group">
+
+                                                            <label>Preview:</label>
+
+                                                            <img src="" id="profile-img-tag" width="200px"  />
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -240,7 +243,8 @@
                                                     <div class="col-lg-offset-2 col-lg-4">
                                                         <div class="checkbox c-checkbox">
                                                             <label>
-                                                                {!! Form::checkbox('checkbox') !!}
+                                                                {{--{!! Form::checkbox('checkbox') !!}--}}
+                                                                {{ Form::checkbox('agree', 1, null, ['class' => 'accept']) }}
                                                                 <span class="fa fa-check"></span>Accept Term of Use:</label>
                                                         </div>
 
@@ -248,7 +252,8 @@
                                                     <div class="col-lg-offset-2 col-lg-4">
                                                         <div class="checkbox c-checkbox">
                                                             <label>
-                                                                {!! Form::checkbox('checkbox') !!}
+                                                                {{--{!! Form::checkbox('checkbox') !!}--}}
+                                                                {{ Form::checkbox('agree', 1, null, ['class' => 'policy']) }}
                                                                 <span class="fa fa-check"></span>Privacy Policy:</label>
                                                         </div>
 
@@ -256,7 +261,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-lg-2 col-lg-offset-5">
-                                                        {!! Form::submit('Continue', ['class' => 'btn btn-sm btn-success rippler rippler-default'] ) !!}
+                                                        {!! Form::submit('Continue', ['class' => 'btn btn-sm btn-success rippler rippler-default','id' => 'step1_continue_btn'] ) !!}
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -273,8 +278,8 @@
                 </section>
             </div>
         </div>
-        <script type="text/javascript">
 
+        <script>
             function readURL(input) {
 
                 if (input.files && input.files[0]) {
@@ -300,53 +305,14 @@
                 readURL(this);
 
             });
-
-        </script>
-        <script type="text/javascript">
-
-            $("body").on("click",".upload-image",function(e){
-
-                $(this).parents("form").ajaxForm(options);
-
+            $(document).on('click', '.browse', function(){
+                var file = $(this).parent().parent().parent().find('.file');
+                file.trigger('click');
             });
-
-
-            var options = {
-
-                complete: function(response)
-
-                {
-
-                    if($.isEmptyObject(response.responseJSON.error)){
-
-                        $("input[name='title']").val('');
-
-                        alert('Image Upload Successfully.');
-
-                    }else{
-
-                        printErrorMsg(response.responseJSON.error);
-
-                    }
-
-                }
-
-            };
-
-
-            function printErrorMsg (msg) {
-
-                $(".print-error-msg").find("ul").html('');
-
-                $(".print-error-msg").css('display','block');
-
-                $.each( msg, function( key, value ) {
-
-                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-
-                });
-
-            }
-
+            $(document).on('change', '.file', function(){
+                $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+            });
         </script>
+
+
 @stop

@@ -93,8 +93,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div id = "box2" class="container">
+                        {{--<div id = "box2" class="container">--}}
 
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-12">--}}
+
+                                    {{--<div class="card">--}}
+                                        {{--<div class="card-header">--}}
+                                            {{--<span class="card-title">Image Upload</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="card-content">--}}
+                                            {{--{{Form::open(['url' => '/step1', 'files' => true])}}--}}
+
+                                            {{--{{Form::label('user_photo', 'User Photo',['class' => 'control-label'])}}--}}
+                                            {{--{{Form::file('user_photo')}}--}}
+                                            {{--{{Form::submit('Save', ['class' => 'btn btn-success'])}}--}}
+
+                                            {{--{{Form::close()}}--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        <div id = "box2" class="container">
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -102,17 +124,67 @@
                                         <div class="card-header">
                                             <span class="card-title">Image Upload</span>
                                         </div>
+
                                         <div class="card-content">
-                                            {{Form::open(['url' => '/step1', 'files' => true])}}
+                                            <div class ="row">
+                                                <div class="col-md-4 col-md-offset-2">
+                                                    <fieldset class="last-child">
 
-                                            {{Form::label('user_photo', 'User Photo',['class' => 'control-label'])}}
-                                            {{Form::file('user_photo')}}
-                                            {{Form::submit('Save', ['class' => 'btn btn-success'])}}
 
-                                            {{--{{Form::close()}}--}}
+
+
+                                                        {{--                                                        <form action="{{ route('ajaxImageUpload') }}" enctype="multipart/form-data" method="POST">--}}
+
+
+                                                        <div class="alert alert-danger print-error-msg" style="display:none">
+
+                                                            <ul></ul>
+
+                                                        </div>
+
+
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                                                        <div class="form-group">
+
+                                                            <label>Alt Title:</label>
+
+                                                            <input type="text" name="title" class="form-control" placeholder="Add Title">
+
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <input type="file" name="img[]" class="file"  id="profile-img">
+                                                            <div class="input-group col-xs-12">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                                                <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
+                                                                <span class="input-group-btn">
+                                                                    <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                                                  </span>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4 col-md-offset-2">
+                                                    <fieldset class="last-child">
+                                                        <div class="form-group">
+
+                                                            <label>Preview:</label>
+
+                                                            <img src="" id="profile-img-tag" width="200px"  />
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>

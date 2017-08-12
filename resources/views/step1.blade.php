@@ -7,6 +7,15 @@
                 <section class="section">
 
                     <div class="page-header text-center">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="container">
                             <h1>Welcome to our service!</h1>
                             <br>
@@ -42,13 +51,13 @@
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Address', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('address', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!! Form::text('address', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Zipcode', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('zipcode', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!! Form::text('zipcode', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>

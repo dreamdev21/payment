@@ -29,3 +29,7 @@ Route::post('step1/create', 'Step1Controller@create');
 //Route::post('step1/edit', 'Step1Controller@edit');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

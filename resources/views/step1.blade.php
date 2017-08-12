@@ -45,7 +45,7 @@
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'City', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('city', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  'S', ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('city', ['abruzzo' => 'Abruzzo', 'basilicata' => 'Basilicata', 'calabria' => 'Calabria', 'campania' => 'Campania', 'emilia-romagna' => 'Emilia-Romagna', 'friuli-venezia-giulia' => 'friuli-Venezia-Giulia', 'lazio' => 'Lazio', 'liguria' => 'Liguria', 'lombardia' => 'Lombardia', 'marche' => 'Marche', 'molise' => 'Molise', 'piemonte' => 'Piemonte', 'puglia' => 'Puglia', 'sardegna' => 'Sardegna', 'sicilia' => 'Sicilia', 'toscana' => 'Toscana', 'trentino-alto-adige' => 'Trentino-Alto-Adige', 'umbria' => 'Umbria', 'valle-d-aosta' => 'Valle-D-Aosta', 'veneto' => 'Veneto', 'san-marino' => 'San-Marino'],  'Abruzzo', ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -191,42 +191,42 @@
                                                 <div class="form-group">
                                                     {!! Form::label('age', 'Age', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('age', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('age', $value = null, ['class' => 'form-control', 'rows' => 1, 'placeholder' => '23']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'First Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('firstname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('firstname', $value = null, ['class' => 'form-control', 'rows' => 1, 'placeholder' => 'John']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Last Name', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('lastname', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('lastname', $value = null, ['class' => 'form-control', 'rows' => 1, 'placeholder' => 'Doe']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('text', 'Phone', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('phone', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('phone', $value = null, ['class' => 'form-control', 'rows' => 1, 'placeholder' => '1234567890']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'johndoe@sample.com']) !!}
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     {!! Form::label('ip', 'IP', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('ip', $value = null, ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('ip', $value = null, ['class' => 'form-control', 'rows' => 1, 'placeholder' => 'xxx.xxx.xxx.xxx']) !!}
                                                     </div>
                                                 </div>
 
@@ -252,20 +252,17 @@
                                                     <div class="col-lg-offset-2 col-lg-4">
                                                         <div class="checkbox c-checkbox">
                                                             <label>
-                                                                {{--{!! Form::checkbox('checkbox') !!}--}}
-                                                                {{ Form::checkbox('agree', 1, null, ['class' => 'accept']) }}
-                                                                <span class="fa fa-check"></span>Accept Term of Use:</label>
+                                                                <input id = "accept" type="checkbox" onclick="check();">
+                                                                <span class="fa fa-check"></span>Accept Term of Use</label>
                                                         </div>
 
                                                     </div>
                                                     <div class="col-lg-offset-2 col-lg-4">
                                                         <div class="checkbox c-checkbox">
                                                             <label>
-                                                                {{--{!! Form::checkbox('checkbox') !!}--}}
-                                                                {{ Form::checkbox('agree', 1, null, ['class' => 'policy']) }}
-                                                                <span class="fa fa-check"></span>Privacy Policy:</label>
+                                                                <input  id = "privacy" type="checkbox" onclick="check();">
+                                                                <span class="fa fa-check"></span>Privacy Policy</label>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

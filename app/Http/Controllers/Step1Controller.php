@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Input;
 use View;
 use Validator;
+use Mail;
 
 class Step1Controller extends Controller
 {
@@ -76,8 +77,7 @@ class Step1Controller extends Controller
     public function create()
     {
         //
-         $res = Input::all();
-
+        $res = Input::all();
          print_r($res);
         $this->validator($res)->validate();
 //        print_r( $this->validator($res));exit;

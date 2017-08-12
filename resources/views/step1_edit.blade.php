@@ -6,6 +6,15 @@
                 <section class="section">
 
                     <div class="page-header text-center">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="container">
                             <h1>Check your data</h1>
                             <br>
@@ -36,19 +45,19 @@
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'City', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('city', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['city'], ['class' => 'form-control' ]) !!}
+                                                            {!!  Form::select('city', ['abruzzo' => 'Abruzzo', 'basilicata' => 'Basilicata', 'calabria' => 'Calabria', 'campania' => 'Campania', 'emilia-romagna' => 'Emilia-Romagna', 'friuli-venezia-giulia' => 'Friuli-Venezia-Giulia', 'lazio' => 'Lazio', 'liguria' => 'Liguria', 'lombardia' => 'Lombardia', 'marche' => 'Marche', 'molise' => 'Molise', 'piemonte' => 'Piemonte', 'puglia' => 'Puglia', 'sardegna' => 'Sardegna', 'sicilia' => 'Sicilia', 'toscana' => 'Toscana', 'trentino-alto-adige' => 'Trentino-Alto-Adige', 'umbria' => 'Umbria', 'valle-d-aosta' => 'Valle-D-Aosta', 'veneto' => 'Veneto', 'san-marino' => 'San-Marino'],  $res['city'], ['class' => 'form-control' ]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Address', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('address', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['address'], ['class' => 'form-control' ]) !!}
+                                                            {!! Form::text('address', $value = $res['address'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         {!! Form::label('select', 'Zipcode', ['class' => 'col-lg-2 control-label'] )  !!}
                                                         <div class="col-lg-10">
-                                                            {!!  Form::select('zipcode', ['S' => 'Small', 'L' => 'Large', 'XL' => 'Extra Large', '2XL' => '2X Large'],  $res['zipcode'], ['class' => 'form-control' ]) !!}
+                                                            {!! Form::text('zipcode', $value = $res['zipcode'], ['class' => 'form-control', 'rows' => 1]) !!}
                                                         </div>
                                                     </div>
                                                 </fieldset>

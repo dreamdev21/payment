@@ -15,17 +15,23 @@
 //    return view('welcome');
 //});
 
-Route::get('/', function () {
-    return view('step1');
-});
-Route::post('step1/edit', function ($res) {
-    return view('step1_edit')->with('res',$res);
+//Route::get('/', function () {
+//
+//
+//    return view('step1');
+//});
+Route::get('/','Step1Controller@index');
+Route::get('/step2','Step2Controller@index');
+Route::post('/step2', function ($res) {
+//    echo 'sdfsd';exit;
+//    return view('step2')->with('res',$res);
 });
 Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
 
 Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 Route::resource('step1', 'Step1Controller');
-Route::post('step1/create', 'Step1Controller@create');
+Route::resource('step2', 'Step2Controller');
+Route::post('/step1/create', 'Step1Controller@create');
 //Route::post('step1/edit', 'Step1Controller@edit');
 
 

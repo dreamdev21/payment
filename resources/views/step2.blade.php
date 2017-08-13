@@ -23,7 +23,7 @@
                     </div>
                     {{--{{ $res[] }}--}}
                     <div class="container">
-                        {!! Form::open(['url' => '/step1/create', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['url' => '/email', 'class' => 'form-horizontal']) !!}
                         {!! csrf_field() !!}
                         <div id = "box1" class="container">
                             <div class="row">
@@ -247,12 +247,13 @@
                                                 <div class="form-group">
                                                     {!! Form::label('ip', 'IP', ['class' => 'col-lg-2 control-label']) !!}
                                                     <div class="col-lg-10">
-                                                        {!! Form::text('ip', $value = $res['ip'], ['class' => 'form-control', 'rows' => 1]) !!}
+                                                        {!! Form::text('ip', $value = $res['ip'], ['class' => 'form-control', 'rows' => 1,'readonly']) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-lg-2 col-lg-offset-5">
                                                         {!! Form::submit('Continue', ['class' => 'btn btn-sm btn-success rippler rippler-default'] ) !!}
+                                                        {{--<button type="submit" class="btn btn-primary rippler rippler-default">continue</button>--}}
                                                     </div>
                                                 </div>
                                             </fieldset>

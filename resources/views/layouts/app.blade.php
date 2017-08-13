@@ -23,6 +23,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+        <!--Italy map style -->
+        {{--<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />--}}
+        {{--<link rel="stylesheet" type="text/css" href="/css/cssmap-italy.css" media="screen" />--}}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 
@@ -39,11 +42,17 @@
         <script src="/js/jquery.gmap.min.js"></script>
         <script src="/js/jquery.rippler.min.js"></script>
         <script src="/js/jquery.swipebox.min.js"></script>
+
         <!-- END Page Custom Script-->
 
         <!-- App Main-->
         <script src="/js/app.js"></script>
         <script src="/js/step1.js"></script>
         <!-- END Scripts-->
+        <!-- italy map js -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cssmapsplugin.com/5/jquery.cssmap.min.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/jquery.cssmap.min.js"></script>
     </body>
 </html>

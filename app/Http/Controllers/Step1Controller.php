@@ -32,56 +32,22 @@ class Step1Controller extends Controller
             'ip' => 'required|ip',
         ]);
     }
-    public function index()
+    public function index(Request $request)
     {
         //
-
-    }
-    public function dropzone()
-
-    {
-
-        return view('dropzone-view');
+        $ip = $request->ip();
+        return view('step1')->with('ip',$ip);
 
     }
 
-
-    /**
-
-     * Image Upload Code
-
-     *
-
-     * @return void
-
-     */
-
-    public function dropzoneStore(Request $request)
-
-    {
-
-        $image = $request->file('file');
-
-        $imageName = time().$image->getClientOriginalName();
-
-        $image->move(public_path('images'),$imageName);
-
-        return response()->json(['success'=>$imageName]);
-
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
         //
         $res = Input::all();
-         print_r($res);
+//         print_r($res);
         $this->validator($res)->validate();
 //        print_r( $this->validator($res));exit;
-        return view('step1_edit')->with('res',$res);
+        return view('step2')->with('res',$res);
     }
 
     /**
@@ -94,12 +60,7 @@ class Step1Controller extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+
     public function show($id)
     {
         //

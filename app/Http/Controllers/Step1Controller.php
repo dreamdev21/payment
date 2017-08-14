@@ -45,7 +45,7 @@ class Step1Controller extends Controller
         //
         $res = Input::all();
 //         print_r($res);
-        $this->validator($res)->validate();
+//        $this->validator($res)->validate();
 //        print_r( $this->validator($res));exit;
         return view('step2')->with('res',$res);
     }
